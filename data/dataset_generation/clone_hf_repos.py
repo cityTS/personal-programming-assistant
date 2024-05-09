@@ -7,8 +7,8 @@ import subprocess
 from multiprocessing import Pool
 from github import Github
 
-ORG = "huggingface"
-MIRROR_DIRECTORY = "hf_public_repos"
+ORG = ""
+MIRROR_DIRECTORY = ""
 TOK_K = 15
 
 
@@ -47,6 +47,8 @@ def mirror_repository(repository):
 def mirror_repositories():
     if os.environ.get('ORG'):
         ORG = os.environ.get('ORG')
+    if os.environ.get('MIRROR_DIRECTORY'):
+        MIRROR_DIRECTORY = os.environ.get('MIRROR_DIRECTORY')
     # Create the mirror directory if it doesn't exist
     if not os.path.exists(MIRROR_DIRECTORY):
         os.makedirs(MIRROR_DIRECTORY, exist_ok=True)
