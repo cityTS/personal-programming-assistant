@@ -61,4 +61,6 @@ def run():
 if __name__ == "__main__":
     if os.environ.get("MIRROR_DIRECTORY"):
         MIRROR_DIRECTORY = os.environ.get("MIRROR_DIRECTORY")
+    if os.environ.get("ORG"):
+        ORG = os.environ.get("ORG")
     run()
