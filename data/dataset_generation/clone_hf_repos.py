@@ -7,7 +7,7 @@ import subprocess
 from multiprocessing import Pool
 from github import Github
 
-ORG = ""
+ORG = "GXUCPC"
 MIRROR_DIRECTORY = ""
 TOK_K = 15
 
