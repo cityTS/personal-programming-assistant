@@ -12,8 +12,8 @@ from huggingface_hub import HfApi, create_repo
 import tempfile
 import subprocess
 
-MIRROR_DIRECTORY = ""
-DATASET_ID = ""
+MIRROR_DIRECTORY = "gxucpc"
+DATASET_ID = "gxucpc-repo-v1"
 SERIALIZE_IN_CHUNKS = False
 FEATHER_FORMAT = "ftr"
 PARQUET_FORMAT = "parquet"
@@ -140,16 +140,6 @@ def read_repository_files(directory) -> pd.DataFrame:
 
 
 if __name__ == "__main__":
-    if os.environ.get("DATASET_ID"):
-        DATASET_ID = os.environ.get("DATASET_ID")
-    else:
-        print("Please provide a dataset ID.")
-        exit(1)
-    if os.environ.get("MIRROR_DIRECTORY"):
-        MIRROR_DIRECTORY = os.environ.get("MIRROR_DIRECTORY")
-    else:
-        print("Please provide a mirror directory.")
-        exit(1)
     df = read_repository_files(MIRROR_DIRECTORY)
     print("DataFrame created, creating dataset...")
     upload_to_hub(file_format=PARQUET_FORMAT, repo_id=DATASET_ID)
